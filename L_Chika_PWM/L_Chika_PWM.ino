@@ -42,17 +42,15 @@ void loop() {
 
 // ゆっくり点灯
 void ledOnPwm(){
-  byte brightness = 0;
-  while(brightness < 255){★forに書き換え
-    brightness++; // brightness = brightness + 1;と同じ意味。
-//    Serial.println(brightness, DEC);
-    analogWrite(LED_PIN, brightness); // 明るさを調整して点灯
+  for(int i = 0; i < 255; i++){
+    Serial.println(i);
+    analogWrite(LED_PIN, i); // 明るさを調整して点灯
 
     float delayTime;
     delayTime = 10;
     // delayTime = ((255.0-brightness)) * ((255.0-brightness)/64) /64);
     
     delay(delayTime) ;
-    Serial.println(delayTime);
+    //Serial.println(delayTime);
   }
 }
