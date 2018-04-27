@@ -1,5 +1,10 @@
 /*
   Analog input, analog output, serial output
+  アナログ入力、アナログ出力、シリアル出力。
+  
+  日本語訳
+  Copyright © 2017 BlueTone (bluetoneinfo@gmail.com)
+  https://github.com/Blue-Tone/ArduinoSamples
 
  Reads an analog input pin, maps the result to a range from 0 to 255
  and uses the result to set the pulsewidth modulation (PWM) of an output pin.
@@ -19,35 +24,33 @@
 
  */
 
-// These constants won't change.  They're used to give names
-// to the pins used:
-const int analogInPin = A0;  // Analog input pin that the potentiometer is attached to
-const int analogOutPin = 9; // Analog output pin that the LED is attached to
+// ピン番号設定。変数は変化しません
+const int analogInPin = A0;  // アナログ入力ピン センサーに接続
+const int analogOutPin = 9;  // アナログ出力ピン LEDに接続
 
-int sensorValue = 0;        // value read from the pot
-int outputValue = 0;        // value output to the PWM (analog out)
+int sensorValue = 0;        // センサー値の読取り用
+int outputValue = 0;        // PWM出力用 (アナログ出力)
 
 void setup() {
-  // initialize serial communications at 9600 bps:
+  // シリアルを通信速度9600bpsで初期化
   Serial.begin(9600);
 }
 
 void loop() {
-  // read the analog in value:
+  // アナログ入力読取り
   sensorValue = analogRead(analogInPin);
-  // map it to the range of the analog out:
+  // アナログ出力範囲に変換(0～1023→0～255)
   outputValue = map(sensorValue, 0, 1023, 0, 255);
-  // change the analog out value:
+  // アナログ出力値を変更
   analogWrite(analogOutPin, outputValue);
 
-  // print the results to the serial monitor:
+  // シリアルモニターに結果表示
   Serial.print("sensor = ");
   Serial.print(sensorValue);
   Serial.print("\t output = ");
   Serial.println(outputValue);
 
-  // wait 2 milliseconds before the next loop
-  // for the analog-to-digital converter to settle
-  // after the last reading:
+  // ADC(アナログ・デジタル・コンバーター)の読み取りから、
+  // 次のループまで2ミリ秒待つ。
   delay(2);
 }

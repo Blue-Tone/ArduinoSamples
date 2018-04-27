@@ -1,29 +1,25 @@
 /*
-  Blink
-  Turns on an LED on for one second, then off for one second, repeatedly.
+  Copyright © 2017 BlueTone (bluetoneinfo@gmail.com)
+  https://github.com/Blue-Tone/ArduinoSamples
 
-  Most Arduinos have an on-board LED you can control. On the Uno and
-  Leonardo, it is attached to digital pin 13. If you're unsure what
-  pin the on-board LED is connected to on your Arduino model, check
-  the documentation at http://www.arduino.cc
+  Lチカ
+  スケッチ例「Blink」の日本語解説版。
 
-  This example code is in the public domain.
+  ボードのLEDが点滅します。
+  デジタル13番PINにLEDを挿すと点滅します。
+*/
 
-  modified 8 May 2014
-  by Scott Fitzgerald
- */
-
-
-// the setup function runs once when you press reset or power the board
+// セットアップ関数は、電源ON時に1度だけ実行される
 void setup() {
-  // initialize digital pin 13 as an output.
+  // ピンの初期化
   pinMode(13, OUTPUT);
 }
 
-// the loop function runs over and over again forever
+// ループ関数は、ずっと実行され続ける
 void loop() {
-  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);              // wait for a second
-  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);              // wait for a second
+  digitalWrite(13, HIGH);   // 点灯
+  delay(1000);              // 1秒待つ
+  digitalWrite(13, LOW);    // 消灯
+  delay(1000);              // 1秒待つ
 }
+

@@ -1,8 +1,14 @@
 /*
  Fading
+ フェード
+  
+  日本語訳
+  Copyright © 2018 BlueTone (bluetoneinfo@gmail.com)
+  https://github.com/Blue-Tone/ArduinoSamples
 
  This example shows how to fade an LED using the analogWrite() function.
-
+analogWrite()を使用して、LEDをフェード（ふんわり点灯）するサンプル。
+ 
  The circuit:
  * LED attached from digital pin 9 to ground.
 
@@ -18,26 +24,26 @@
  */
 
 
-int ledPin = 9;    // LED connected to digital pin 9
+int ledPin = 9;    // デジタル9番ピンにLEDを接続
 
 void setup() {
-  // nothing happens in setup
+  // 初期化処理なし
 }
 
 void loop() {
-  // fade in from min to max in increments of 5 points:
+  // 最小から最大まで、5ずつ増やしてフェードイン
   for (int fadeValue = 0 ; fadeValue <= 255; fadeValue += 5) {
-    // sets the value (range from 0 to 255):
+    // 値を設定(範囲：0～255)
     analogWrite(ledPin, fadeValue);
-    // wait for 30 milliseconds to see the dimming effect
+    // 調光がわかるように30ミリ秒待つ
     delay(30);
   }
 
-  // fade out from max to min in increments of 5 points:
+  // 最大から最小まで、5ずつ減らしてフェードアウト
   for (int fadeValue = 255 ; fadeValue >= 0; fadeValue -= 5) {
-    // sets the value (range from 0 to 255):
+    // 値を設定(範囲：0～255)
     analogWrite(ledPin, fadeValue);
-    // wait for 30 milliseconds to see the dimming effect
+    // 調光がわかるように30ミリ秒待つ
     delay(30);
   }
 }

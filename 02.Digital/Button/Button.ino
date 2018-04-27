@@ -1,55 +1,37 @@
 /*
   Button
+  ボタン
 
- Turns on and off a light emitting diode(LED) connected to digital
- pin 13, when pressing a pushbutton attached to pin 2.
-
-
- The circuit:
- * LED attached from pin 13 to ground
- * pushbutton attached to pin 2 from +5V
- * 10K resistor attached to pin 2 from ground
-
- * Note: on most Arduinos there is already an LED on the board
- attached to pin 13.
-
-
- created 2005
- by DojoDave <http://www.0j0.org>
- modified 30 Aug 2011
- by Tom Igoe
-
- This example code is in the public domain.
-
- http://www.arduino.cc/en/Tutorial/Button
+  Copyright © 2017 BlueTone (bluetoneinfo@gmail.com)
+  https://github.com/Blue-Tone/ArduinoSamples
+  
  */
 
-// constants won't change. They're used here to
-// set pin numbers:
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int ledPin =  13;      // the number of the LED pin
+// ピン番号設定。変数は変化しません
+const int buttonPin = 2;     // ボタンピン番号
+const int ledPin =  13;      // LEDピン番号
 
-// variables will change:
-int buttonState = 0;         // variable for reading the pushbutton status
+// 変数は変化します
+int buttonState = 0;         // ボタン状態読み取り用変数
 
 void setup() {
-  // initialize the LED pin as an output:
+  // LEDを出力として初期化
   pinMode(ledPin, OUTPUT);
-  // initialize the pushbutton pin as an input:
+  // ボタンピンを入力として初期化
   pinMode(buttonPin, INPUT);
 }
 
 void loop() {
-  // read the state of the pushbutton value:
+  // ボタンの状態を読み込む
   buttonState = digitalRead(buttonPin);
 
-  // check if the pushbutton is pressed.
-  // if it is, the buttonState is HIGH:
+  // ボタンが押されているかチェック
+  // 押されていたら、HIGHになる
   if (buttonState == HIGH) {
-    // turn LED on:
+    // LEDオン:
     digitalWrite(ledPin, HIGH);
   } else {
-    // turn LED off:
+    // LEDオフ:
     digitalWrite(ledPin, LOW);
   }
 }
