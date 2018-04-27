@@ -6,26 +6,12 @@
   Copyright © 2017 BlueTone (bluetoneinfo@gmail.com)
   https://github.com/Blue-Tone/ArduinoSamples
 
- Reads an analog input pin, maps the result to a range from 0 to 255
- and uses the result to set the pulsewidth modulation (PWM) of an output pin.
- Also prints the results to the serial monitor.
-
- The circuit:
- * potentiometer connected to analog pin 0.
-   Center pin of the potentiometer goes to the analog pin.
-   side pins of the potentiometer go to +5V and ground
- * LED connected from digital pin 9 to ground
-
- created 29 Dec. 2008
- modified 9 Apr 2012
- by Tom Igoe
-
- This example code is in the public domain.
-
+  可変抵抗向けのスケッチを、光センサー(CdSセル:フォトレジスタ)向けに修正。
+  
  */
 
 // ピン番号設定。変数は変化しません
-const int analogInPin = A0;  // アナログ入力ピン センサーに接続
+const int analogInPin = A0;  // アナログ入力ピン センサーに接続。もう片方はGNDへ。
 const int analogOutPin = 9;  // アナログ出力ピン LEDに接続
 
 int sensorValue = 0;        // センサー値の読取り用
@@ -34,6 +20,7 @@ int outputValue = 0;        // PWM出力用 (アナログ出力)
 void setup() {
   // シリアルを通信速度9600bpsで初期化
   Serial.begin(9600);
+  pinMode(analogInPin, INPUT_PULLUP);   // プルアップ
 }
 
 void loop() {

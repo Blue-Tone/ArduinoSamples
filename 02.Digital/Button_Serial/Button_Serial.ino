@@ -27,11 +27,18 @@ void setup() {
   
   // ボタンピンを入力として初期化
   pinMode(buttonPin, INPUT_PULLUP); // PULLUPを指定することで、内部の抵抗を使用する
+
+  // シリアル初期化
+  Serial.begin(9600);
 }
 
 void loop() {
   // ボタンの状態を読み込む
   buttonState = digitalRead(buttonPin);
+
+  // 変数の状態を表示
+  Serial.print("buttonState=");
+  Serial.println(buttonState); 
 
   // ボタンが押されているかチェック
   // 押されていたら、LOWになる
